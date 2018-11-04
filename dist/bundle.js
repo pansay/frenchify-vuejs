@@ -5,11 +5,11 @@ module.exports={
     "from": "from",
     "html": "html output",
     "rendered": "rendered output",
-    "nolang": "no language",
-    "lang": {
-      "fr": "frenchify",
-      "en": "englishify",
-      "es": "spanishify"
+    "nolang": "No language",
+    "languages": {
+      "fr": "French",
+      "en": "English",
+      "es": "Spanish"
     },
     "helpers": "helpers",
     "markdown": "markdown to html",
@@ -11357,9 +11357,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var el = '#app';
 var frenchify = new _frenchifyRules.Frenchify([_frenchifyRules.rules]);
 var text = frenchify.applyRules('abd -- def');
+
+var options = _frenchifyRules.languageRules.map(function (language) {
+  return {
+    value: language.id,
+    text: _en.default.languages[language.id]
+  };
+}).concat([{
+  value: 'nolang',
+  text: _en.default.nolang
+}]);
+
 var data = {
   txt: _en.default,
-  message: text
+  message: text,
+  options: options
 };
 var app = new _vue.default({
   el: el,

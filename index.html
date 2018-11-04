@@ -18,6 +18,12 @@
       {{ message }}
     </div>
 
+  <ul>
+    <li v-for="option in options">
+      {{option.value}} - {{ option.text }}
+    </li>
+  </ul>
+
     <footer>
         <a href="https://github.com/pansay/frenchify-vuejs">
           {{ txt.source }}

@@ -6,9 +6,22 @@ const el = '#app';
 const frenchify = new Frenchify([rules]);
 const text = frenchify.applyRules('abd -- def');
 
+const options = languageRules
+  .map(language => {
+    return {
+      value: language.id,
+      text: txt.languages[language.id],
+    };
+  })
+  .concat([{
+    value: 'nolang',
+    text: txt.nolang,
+  }]);
+
 const data = {
   txt,
   message: text,
+  options,
 };
 
 const app = new Vue({
