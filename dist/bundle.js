@@ -1,4 +1,22 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+module.exports={
+    "title": "Frenchify (VueJS)",
+    "source": "source",
+    "from": "from",
+    "html": "html output",
+    "rendered": "rendered output",
+    "nolang": "no language",
+    "lang": {
+      "fr": "frenchify",
+      "en": "englishify",
+      "es": "spanishify"
+    },
+    "helpers": "helpers",
+    "markdown": "markdown to html",
+    "convert": "convert"
+}
+
+},{}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42,7 +60,7 @@ var languageRules = [{
 }];
 exports.languageRules = languageRules;
 
-},{"./rules/rules-en.json":2,"./rules/rules-es.json":3,"./rules/rules-fr.json":4,"./rules/rules.json":5,"./src/frenchify":6}],2:[function(require,module,exports){
+},{"./rules/rules-en.json":3,"./rules/rules-es.json":4,"./rules/rules-fr.json":5,"./rules/rules.json":6,"./src/frenchify":7}],3:[function(require,module,exports){
 module.exports=[
     {
         "from": "([^=])\"([^=]*?)\"",
@@ -50,7 +68,7 @@ module.exports=[
     }
 ]
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 module.exports=[
     {
         "from": "([^=])\"([^=]*?)\"",
@@ -58,7 +76,7 @@ module.exports=[
     }
 ]
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports=[
     {
         "from": "([^=])\"([^=]*?)\"",
@@ -78,7 +96,7 @@ module.exports=[
     }
 ]
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports=[
     {
         "from": "---",
@@ -106,7 +124,7 @@ module.exports=[
     }
 ]
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -160,7 +178,7 @@ function () {
 
 exports.default = Frenchify;
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 
 // shim for using process in browser
@@ -372,7 +390,7 @@ process.umask = function () {
   return 0;
 };
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function (setImmediate,clearImmediate){
 "use strict";
 
@@ -454,7 +472,7 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
 };
 
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
-},{"process/browser.js":7,"timers":8}],9:[function(require,module,exports){
+},{"process/browser.js":8,"timers":9}],10:[function(require,module,exports){
 (function (global,setImmediate){
 "use strict";
 
@@ -11325,22 +11343,31 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
-},{"timers":8}],10:[function(require,module,exports){
+},{"timers":9}],11:[function(require,module,exports){
 "use strict";
-
-var _vue = _interopRequireDefault(require("../node_modules/vue/dist/vue"));
 
 var _frenchifyRules = require("frenchify-rules");
 
+var _vue = _interopRequireDefault(require("../node_modules/vue/dist/vue"));
+
+var _en = _interopRequireDefault(require("../i18n/en.json"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var el = '#app';
 var frenchify = new _frenchifyRules.Frenchify([_frenchifyRules.rules]);
 var text = frenchify.applyRules('abd -- def');
+var data = {
+  txt: _en.default,
+  message: text
+};
 var app = new _vue.default({
-  el: '#app',
-  data: {
-    message: text
+  el: el,
+  data: data,
+  created: function created() {
+    document.title = _en.default.title;
   }
 });
+console.log(app, _frenchifyRules.languageRules);
 
-},{"../node_modules/vue/dist/vue":9,"frenchify-rules":1}]},{},[10]);
+},{"../i18n/en.json":1,"../node_modules/vue/dist/vue":10,"frenchify-rules":2}]},{},[11]);

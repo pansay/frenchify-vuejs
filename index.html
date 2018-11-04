@@ -2,11 +2,27 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Frenchify (VueJS)</title>
+  <title></title>
 </head>
 <body>
   <div id="app">
-    {{ message }}
+
+    <header>
+      <h1>
+        {{ txt.title }}
+      </h1>
+    </header>
+
+    <div>
+      {{ message }}
+    </div>
+
+    <footer>
+        <a href="https://github.com/pansay/frenchify-vuejs">
+          {{txt.source}}
+        </a>
+    </footer>
+
   </div>
   <script src="dist/bundle.js"></script>
 </body>

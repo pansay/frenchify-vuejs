@@ -1,0 +1,16 @@
+{
+    "title": "Frenchify (VueJS)",
+    "source": "source",
+    "from": "from",
+    "html": "html output",
+    "rendered": "rendered output",
+    "nolang": "no language",
+    "lang": {
+      "fr": "frenchify",
+      "en": "englishify",
+      "es": "spanishify"
+    },
+    "helpers": "helpers",
+    "markdown": "markdown to html",
+    "convert": "convert"
+}
