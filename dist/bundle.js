@@ -4,7 +4,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+Object.defineProperty(exports, "Frenchify", {
+  enumerable: true,
+  get: function get() {
+    return _frenchify.default;
+  }
+});
+Object.defineProperty(exports, "rules", {
+  enumerable: true,
+  get: function get() {
+    return _rules.default;
+  }
+});
+exports.languageRules = void 0;
 
 var _frenchify = _interopRequireDefault(require("./src/frenchify"));
 
@@ -28,12 +40,7 @@ var languageRules = [{
   id: 'es',
   rules: _rulesEs.default
 }];
-var _default = {
-  Frenchify: _frenchify.default,
-  rules: _rules.default,
-  languageRules: languageRules
-};
-exports.default = _default;
+exports.languageRules = languageRules;
 
 },{"./rules/rules-en.json":2,"./rules/rules-es.json":3,"./rules/rules-fr.json":4,"./rules/rules.json":5,"./src/frenchify":6}],2:[function(require,module,exports){
 module.exports=[
@@ -8459,12 +8466,12 @@ var _frenchifyRules = require("frenchify-rules");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var app = new _vue.default({
-  el: '#app',
-  data: {
-    message: 'Hello Vue!'
-  }
-});
-console.log('hello', _vue.default, _frenchifyRules.Frenchify, _frenchifyRules.rules, _frenchifyRules.languageRules, app);
+// const app = new Vue({
+//   el: '#app',
+//   data: {
+//     message: 'Hello Vue!',
+//   },
+// });
+console.log(_frenchifyRules.Frenchify, _frenchifyRules.rules, _frenchifyRules.languageRules);
 
 },{"frenchify-rules":1,"vue":9}]},{},[10]);
