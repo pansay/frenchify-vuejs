@@ -1,0 +1,28 @@
+{
+  "name": "frenchify-vuejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pansay/frenchify-vuejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pansay/frenchify-vuejs/issues"
+  },
+  "homepage": "https://github.com/pansay/frenchify-vuejs#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jasmine": "^2.10.1",
+    "frenchify-rules": "git+https://github.com/pansay/frenchify-rules.git"
+  }
+}
