@@ -11334,10 +11334,12 @@ var _frenchifyRules = require("frenchify-rules");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var frenchify = new _frenchifyRules.Frenchify([_frenchifyRules.rules]);
+var text = frenchify.applyRules('abd -- def');
 var app = new _vue.default({
   el: '#app',
   data: {
-    message: 'Hello Vue!'
+    message: text
   }
 });
 
