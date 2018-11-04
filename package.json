@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint src/*.js"
+    "lint": "eslint src/*.js",
+    "build": "browserify src/main.js -t [ babelify --presets [ @babel/preset-env ] --plugins [ @babel/plugin-proposal-class-properties ] --global true ] --outfile dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -16,13 +17,20 @@
     "url": "https://github.com/pansay/frenchify-vuejs/issues"
   },
   "homepage": "https://github.com/pansay/frenchify-vuejs#readme",
-  "dependencies": {},
+  "dependencies": {
+    "vue": "^2.5.17",
+    "frenchify-rules": "git+https://github.com/pansay/frenchify-rules.git"
+  },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jasmine": "^2.10.1",
-    "frenchify-rules": "git+https://github.com/pansay/frenchify-rules.git"
+    "eslint-plugin-jasmine": "^2.10.1"
   }
 }
