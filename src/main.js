@@ -5,7 +5,7 @@ import txt from '../i18n/en.json';
 
 const el = '#app';
 const frenchify = new Frenchify([rules]);
-const text = frenchify.applyRules('abd -- def');
+const text = 'abd -- def';
 
 const options = languageRules
   .map(language => ({
@@ -21,16 +21,22 @@ const data = {
   txt,
   message: text,
   options,
+  language: 'nolang',
 };
 
 const created = () => {
   document.title = txt.title;
 };
 
-const app = new Vue({
+const methods = {
+  something: function () {
+    this.message = frenchify.applyRules(text);
+  },
+};
+
+new Vue({
   el,
   data,
   created,
+  methods,
 });
-
-console.log(app, languageRules);

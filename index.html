@@ -19,18 +19,23 @@
     </div>
 
     <div class="main">
-      <form>
-        <fieldset class="radios">
-            <ul>
-              <li v-for="option in options">
-                <label class="radio">
-                  {{option.value}} - {{ option.text }}
-                    <input type="radio" />
-                </label>
-              </li>
-            </ul>
-        </fieldset>
-      </form>
+      <button
+        v-on:click="something">
+        test
+      </button>
+      <fieldset class="radios">
+        <ul>
+          <li v-for="option in options">
+            <label class="radio">
+              {{ option.text }}
+              <input
+                type="radio"
+                v-model="language"
+                v-bind:value="option.value" />
+            </label>
+          </li>
+        </ul>
+      </fieldset>
     </div>
 
     <footer>

@@ -11357,7 +11357,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /* global document */
 var el = '#app';
 var frenchify = new _frenchifyRules.Frenchify([_frenchifyRules.rules]);
-var text = frenchify.applyRules('abd -- def');
+var text = 'abd -- def';
 
 var options = _frenchifyRules.languageRules.map(function (language) {
   return {
@@ -11372,18 +11372,24 @@ var options = _frenchifyRules.languageRules.map(function (language) {
 var data = {
   txt: _en.default,
   message: text,
-  options: options
+  options: options,
+  language: 'nolang'
 };
 
 var created = function created() {
   document.title = _en.default.title;
 };
 
-var app = new _vue.default({
+var methods = {
+  something: function something() {
+    this.message = frenchify.applyRules(text);
+  }
+};
+new _vue.default({
   el: el,
   data: data,
-  created: created
+  created: created,
+  methods: methods
 });
-console.log(app, _frenchifyRules.languageRules);
 
 },{"../i18n/en.json":1,"../node_modules/vue/dist/vue":10,"frenchify-rules":2}]},{},[11]);
