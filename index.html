@@ -18,11 +18,20 @@
       {{ message }}
     </div>
 
-  <ul>
-    <li v-for="option in options">
-      {{option.value}} - {{ option.text }}
-    </li>
-  </ul>
+    <div class="main">
+      <form>
+        <fieldset class="radios">
+            <ul>
+              <li v-for="option in options">
+                <label class="radio">
+                  {{option.value}} - {{ option.text }}
+                    <input type="radio" />
+                </label>
+              </li>
+            </ul>
+        </fieldset>
+      </form>
+    </div>
 
     <footer>
         <a href="https://github.com/pansay/frenchify-vuejs">

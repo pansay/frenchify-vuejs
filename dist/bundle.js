@@ -11354,6 +11354,7 @@ var _en = _interopRequireDefault(require("../i18n/en.json"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* global document */
 var el = '#app';
 var frenchify = new _frenchifyRules.Frenchify([_frenchifyRules.rules]);
 var text = frenchify.applyRules('abd -- def');
@@ -11373,12 +11374,15 @@ var data = {
   message: text,
   options: options
 };
+
+var created = function created() {
+  document.title = _en.default.title;
+};
+
 var app = new _vue.default({
   el: el,
   data: data,
-  created: function created() {
-    document.title = _en.default.title;
-  }
+  created: created
 });
 console.log(app, _frenchifyRules.languageRules);
 
