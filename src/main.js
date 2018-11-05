@@ -1,11 +1,14 @@
 /* global document */
 import { Frenchify, rules, languageRules } from 'frenchify-rules';
+import showdown from 'showdown';
 import Vue from '../node_modules/vue/dist/vue';
 import txt from '../i18n/en.json';
 
 const el = '#app';
 const frenchify = new Frenchify([rules]);
 const text = 'abd -- def';
+const showDownConverter = new showdown.Converter();
+const abc = showDownConverter.makeHtml('abc *test* def');
 
 const options = languageRules
   .map(language => ({
@@ -29,11 +32,12 @@ const created = () => {
 };
 
 const methods = {
-  something: function () {
-    this.message = frenchify.applyRules(text);
+  something() {
+    this.message = frenchify.applyRules(text) + abc;
   },
 };
 
+// eslint-disable-next-line no-new
 new Vue({
   el,
   data,

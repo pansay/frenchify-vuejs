@@ -18,8 +18,9 @@
   },
   "homepage": "https://github.com/pansay/frenchify-vuejs#readme",
   "dependencies": {
-    "vue": "^2.5.17",
-    "frenchify-rules": "git+https://github.com/pansay/frenchify-rules.git"
+    "frenchify-rules": "git+https://github.com/pansay/frenchify-rules.git",
+    "showdown": "^1.8.7",
+    "vue": "^2.5.17"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
