@@ -14,15 +14,13 @@
       </h1>
     </header>
 
-    <div>
-      {{ message }}
-    </div>
-
     <div class="main">
+
       <button
-        v-on:click="something">
-        test
+        v-on:click="convert">
+        {{ txt.convert }}
       </button>
+
       <fieldset class="radios">
         <ul>
           <li v-for="option in options">
@@ -36,6 +34,47 @@
           </li>
         </ul>
       </fieldset>
+
+      <label class="checkbox">
+        {{ txt.helpers }}
+        <input
+          type="checkbox"
+          v-model="helpers" />
+      </label>
+
+      <label class="checkbox">
+        {{ txt.markdown }}
+        <input
+          type="checkbox"
+          v-model="markdown"/>
+      </label>
+
+      <div class="columns">
+
+        <label class="column">
+            {{ txt.input }}
+            <textarea
+              v-model="input">
+            </textarea>
+        </label>
+
+        <label class="column">
+          {{ txt.html }}
+          <textarea
+            v-model="output">
+          </textarea>
+        </label>
+
+        <div class="column">
+          {{ txt.rendered }}
+          <div
+            class="rendered"
+            v-html="output">
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
     <footer>

@@ -2,18 +2,18 @@
 module.exports={
     "title": "Frenchify (VueJS)",
     "source": "source",
-    "from": "from",
-    "html": "html output",
-    "rendered": "rendered output",
+    "input": "Input",
+    "html": "Html output",
+    "rendered": "Rendered output",
     "nolang": "No language",
     "languages": {
       "fr": "French",
       "en": "English",
       "es": "Spanish"
     },
-    "helpers": "helpers",
-    "markdown": "markdown to html",
-    "convert": "convert"
+    "helpers": "Helpers",
+    "markdown": "Markdown to html",
+    "convert": "Convert"
 }
 
 },{}],2:[function(require,module,exports){
@@ -15804,10 +15804,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /* global document */
 var el = '#app';
-var frenchify = new _frenchifyRules.Frenchify([_frenchifyRules.rules]);
-var text = 'abd -- def';
 var showDownConverter = new _showdown.default.Converter();
-var abc = showDownConverter.makeHtml('abc *test* def');
 
 var options = _frenchifyRules.languageRules.map(function (language) {
   return {
@@ -15821,9 +15818,35 @@ var options = _frenchifyRules.languageRules.map(function (language) {
 
 var data = {
   txt: _en.default,
-  message: text,
+  input: '',
+  output: '',
+  helpers: false,
+  markdown: false,
   options: options,
   language: 'nolang'
+};
+
+var _convert = function convert(languageId, markdown, helpers, text) {
+  var rulesToApply = [];
+
+  if (languageId !== 'nolang') {
+    rulesToApply.push(_frenchifyRules.languageRules.find(function (language) {
+      return language.id === languageId;
+    }).rules);
+  }
+
+  if (helpers) {
+    rulesToApply.push(_frenchifyRules.rules);
+  }
+
+  var frenchify = new _frenchifyRules.Frenchify(rulesToApply);
+  text = frenchify.applyRules(text);
+
+  if (markdown) {
+    text = showDownConverter.makeHtml(text);
+  }
+
+  return text;
 };
 
 var created = function created() {
@@ -15831,8 +15854,8 @@ var created = function created() {
 };
 
 var methods = {
-  something: function something() {
-    this.message = frenchify.applyRules(text) + abc;
+  convert: function convert() {
+    this.output = _convert(this.language, this.markdown, this.helpers, this.input);
   }
 }; // eslint-disable-next-line no-new
 

@@ -5,10 +5,7 @@ import Vue from '../node_modules/vue/dist/vue';
 import txt from '../i18n/en.json';
 
 const el = '#app';
-const frenchify = new Frenchify([rules]);
-const text = 'abd -- def';
 const showDownConverter = new showdown.Converter();
-const abc = showDownConverter.makeHtml('abc *test* def');
 
 const options = languageRules
   .map(language => ({
@@ -22,9 +19,30 @@ const options = languageRules
 
 const data = {
   txt,
-  message: text,
+  input: '',
+  output: '',
+  helpers: false,
+  markdown: false,
   options,
   language: 'nolang',
+};
+
+const convert = (languageId, markdown, helpers, text) => {
+  const rulesToApply = [];
+  if (languageId !== 'nolang') {
+    rulesToApply
+      .push(languageRules
+        .find(language => language.id === languageId).rules);
+  }
+  if (helpers) {
+    rulesToApply.push(rules);
+  }
+  const frenchify = new Frenchify(rulesToApply);
+  text = frenchify.applyRules(text);
+  if (markdown) {
+    text = showDownConverter.makeHtml(text);
+  }
+  return text;
 };
 
 const created = () => {
@@ -32,8 +50,8 @@ const created = () => {
 };
 
 const methods = {
-  something() {
-    this.message = frenchify.applyRules(text) + abc;
+  convert() {
+    this.output = convert(this.language, this.markdown, this.helpers, this.input);
   },
 };
 
